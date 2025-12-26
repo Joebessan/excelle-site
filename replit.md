@@ -50,10 +50,10 @@ shared/
 ## Key Features
 
 ### Pages
-1. **Home (Accueil)**: Full-screen hero with image carousel, "Tirer mon verset" button, mission cards, service schedule
+1. **Home (Accueil)**: Full-screen hero with image carousel, "Tirer mon verset" button (modal overlay), newsletter subscription, weekly program, upcoming events, support card, blog section, mission cards
 2. **About (Qui sommes-nous)**: Church history (founded 2001 by Apôtre Janine AHO), Collège des Serviteurs, values
-3. **Donate (Faire un don)**: Three donation types (Dîme, Offrande, Projet), amount selector, payment form
-4. **Join (Nous rejoindre)**: Contact form with volunteer area selection, location info
+3. **Donate (Faire un don)**: Three donation types (Dîme, Offrande, Soutenir un projet), amounts in FCFA, Mobile Money as primary payment
+4. **Join (Nous rejoindre)**: Contact form with volunteer area selection, Beninese placeholders (Koffi AHOUANSOU, +229)
 
 ### Animations
 - Elastic spring transitions (Framer Motion)
@@ -65,8 +65,8 @@ shared/
 ### Navigation
 - Scroll reset on page navigation
 - Responsive mobile menu
-- Social links (Instagram, YouTube, Telegram, WhatsApp)
-- Official logo from Cloudinary
+- Social links (Facebook, Instagram, YouTube, TikTok, Telegram, WhatsApp)
+- Official logo from Cloudinary in top-left position
 
 ## API Endpoints
 - `GET /api/verse/random` - Returns a random Bible verse
@@ -111,3 +111,11 @@ shared/
 - Added image carousel with Cloudinary images
 - Updated About page with warm editorial content and leadership list
 - Added official logo and social media links
+- Converted donations to CFA (Franc CFA) with Mobile Money as primary payment
+- Added "Suivez-nous" section in footer with 6 social platforms
+- Updated all placeholders with Beninese references (names, addresses, +229 phone)
+- Added newsletter subscription for daily email teachings
+- Fixed verse card display with modal overlay for foreground visibility
+- Added weekly program section (Lundi-Dimanche)
+- Added upcoming events and support card for current programs
+- Added blog section on home page
