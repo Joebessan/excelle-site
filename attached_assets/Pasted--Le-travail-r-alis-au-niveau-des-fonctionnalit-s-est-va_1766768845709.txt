@@ -1,0 +1,86 @@
+ Le travail réalisé au niveau des fonctionnalités est validé.
+
+Le bouton « Tirer mon verset », la génération aléatoire, l'affichage sur carte et le téléchargement fonctionne correctement.
+
+La navigation est fluide.
+
+Correction apportée : lorsqu'on clique sur un menu en haut, le site doit revenir automatiquement en haut de la page ( scroll reset ).
+
+➡️ En dehors de ce point, nous n'avons plus besoin de retravailler la partie fonctionnelle pour l'instant.
+
+🎯 Nouvelle priorité
+Nous devons désormais concentrer nos efforts sur :
+
+Le rendu visuel  (style, design, cohérence graphique).
+
+Le contenu éditorial  (textes, présentation, ton chaleureux et inspirant).
+
+🎨 Design et style
+Inspiration visuelle :  s'inspirer de l'image de référence donnée pour toutes les pages.
+
+Style souhaité :  moderne, minimaliste, hyper design, avec des images fortes et élégantes.
+
+Palette de couleurs :
+
+Principales : #FFFFFF (blanc), #011C40 (bleu profond), #021F59 (bleu nuit)
+
+Secondaires : #A6702E (bronze), #D9AA52 (doré), #F2F2F2 (blanc cassé)
+
+Animations :
+
+Survol : élasticité, rebond, glow doré.
+
+Défilement : parallaxe, fondu enchaîné, glissement, retournement de carte.
+
+Transitions : assouplissement « élastique en douceur ».
+
+📑 Contenu à retransmettre plus chaleureusement
+Qui sommes-nous ?
+Excelle pour Christ, c'est avant tout une œuvre de foi. 
+Un lieu où l'on vient tel que l'on est, sans masque, sans jugement. Un espace de prière, d'écoute et d'amour, où chacun peut reprendre souffle et retrouver sa valeur en Dieu.
+
+Ici, nous croyons que Dieu restaure les vies. Nous croyons que l'amour du Christ relève ceux qui sont tombés et redonne un sens à ceux qui n'en voient plus.
+
+Ce qui nous anime
+Notre mission est claire : conduire les cœurs vers Jésus-Christ et accompagner les personnes dans leur chemin de guérison et de transformation. 
+Nous ne parlons pas seulement de foi, nous la vivons au quotidien, au contact des réalités humaines.
+
+Nous allons à la rencontre de ceux que la société oublie souvent : personnes dépendantes, femmes abandonnées, jeunes en difficulté, enfants sans soutien. 
+Nous leur offrons une présence, une parole, une main tendue, et surtout l'espérance.
+
+Notre histoire
+L'œuvre Excelle pour Christ International, autrefois connue sous le nom Mount Horeb International Fondation , a vu le jour le 5 avril 2001 à Guinkomey, à Cotonou, au Bénin. 
+Elle est portée depuis ses débuts par la servante de Dieu, l'apôtre Janine AHO, avec un seul objectif : obéir à l'appel de Dieu et servir les âmes avec amour et fidélité.
+
+Aujourd'hui encore, Excelle pour Christ continue d'avancer avec foi, convaincue que chaque vie compte et que Dieu n'a pas dit son dernier mot.
+
+Collège des serviteurs
+Pasteure Huguette ACACHA
+
+Pasteure Euphrasie AHO
+
+Pasteur Marius AHO
+
+Pasteure Éléonore ZOUNMENOU
+
+Pasteur Gwendal OSSE
+
+Pasteure CHAHOUNKA Odette
+
+Prophète Boris D'OLIVEIRA
+
+Prophète Cyriaque HOUNSINOU
+
+Prophétesse Joaline James
+
+Prophétesse Victoire OSSE
+
+Docteur Chahounka Séraphin
+
+Apôtre Elias AMOUSSA
+
+Pasteur Yanik HOUNGBO
+
+🧭 Résultat attendu
+Un site validé au niveau des fonctionnalités , a désormais travaillé sur le rendu visuel et le contenu . 
+Chaque page doit être inspirée de l'image de référence, avec un style moderne et minimaliste, des images hyper design, et une ton chaleureuse qui transmet l'identité et la mission de la Fondation Excelle pour le Christ.

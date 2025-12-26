@@ -1,0 +1,78 @@
+Le travail réalisé au niveau des fonctionnalités  est validé. Le bouton « Tirer mon verset » , la génération aléatoire, l'affichage sur carte et le téléchargement fonctionne correctement. La navigation est fluide et le bug de retour en haut de page est corrigé. 
+➡️ Nous n'avons plus besoin de retravailler la partie fonctionnelle pour l'instant.
+
+Nouvelle priorité :  
+ Nous devons désormais concentrer nos efforts sur :
+
+Le rendu visuel  (style, design, animations).
+
+Le contenu éditorial  (textes, présentation, ton chaleureux et inspirant).
+
+🎨 Design et style
+Correction apportée :  lorsqu'on passe d'une page à une autre, le site doit automatiquement revenir en haut ( scroll reset).
+
+Inspiration visuelle :  s'inspirer de l'image de référence donnée pour toutes les pages.
+
+Style souhaité :  moderne, minimaliste, hyper design, avec des images fortes et élégantes.
+
+Palette de couleurs :
+
+Principales : #011C40 (bleu profond), #021F59 (bleu nuit)
+
+Secondaires : #A6702E (bronze), #D9AA52 (doré), #F2F2F2 (blanc cassé)
+
+Animations :
+
+Survol : élasticité, rebond, glow doré.
+
+Défilement : parallaxe, fondu enchaîné, glissement, retournement de carte .
+
+Transitions : assouplissement « élastique en douceur ».
+
+📑 Contenu à retransmettre plus chaleureusement
+Article 1 : Dénomination
+La Fondation Excelle pour Christ (FEC) est une association chrétienne d'aide et de soutien spirituel et matériel, sans but lucratif, fondée conformément à la loi du 1er juillet 1901.
+
+Article 2 : Mais
+L'association existe pour subvenir aux besoins spirituels, matériels et moraux des âmes selon l'ordre de l'Éternel. 
+Ses missions principales :
+
+Faire connaître l'Évangile de Jésus-Christ au monde.
+
+Assister les personnes en difficulté dans leur réinsertion dans la vie active : drogués, alcooliques, prostituées, délinquants, femmes abandonnées, jeunes filles enceintes laissées pour compte, enfants scolarisés sans soutien, etc.
+
+Article 3 : Siège
+Le siège de la Fondation Excelle pour Christ est établi à Cotonou (Bénin).
+
+Historique
+Excelle pour Christ International (anciennement Mount Horeb International Fondation ) a été fondée le 05 avril 2001 à Guinkomey, dans la ville de Cotonou (Bénin), par la servante de Dieu, l'apôtre Janine AHO.
+
+Collège des serviteurs
+Pasteure Huguette ACACHA
+
+Pasteure Euphrasie AHO
+
+Pasteur Marius AHO
+
+Pasteure Éléonore ZOUNMENOU
+
+Pasteur Gwendal OSSE
+
+Pasteure CHAHOUNKA Odette
+
+Prophète Boris D'OLIVEIRA
+
+Prophète Cyriaque HOUNSINOU
+
+Prophétesse Joaline James
+
+Prophétesse Victoire OSSE
+
+Docteur Chahounka Séraphin
+
+Apôtre Elias AMOUSSA
+
+Pasteur Yanik HOUNGBO
+
+🧭 Résultat attendu
+Un site validé au niveau des fonctionnalités , a désormais travaillé sur le rendu visuel et le contenu . Chaque page doit être inspirée de l'image de référence, avec un style moderne et minimaliste, des images hyper design, et une ton chaleureuse qui transmet l'identité et la mission de la Fondation Excelle pour le Christ.

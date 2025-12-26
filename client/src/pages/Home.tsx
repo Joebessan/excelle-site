@@ -1,17 +1,47 @@
-import { useState, useRef, useCallback } from "react";
-import { motion } from "framer-motion";
-import { ChevronDown, Sparkles, Music, Users, Heart } from "lucide-react";
+import { useState, useRef, useCallback, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, Sparkles, Music, Users, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { VerseCard } from "@/components/verse/VerseCard";
 import { useToast } from "@/hooks/use-toast";
 import type { Verse } from "@shared/schema";
 
+const carouselImages = [
+  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768568/photo_2025-12-26_18-01-34_coqlji.jpg",
+  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768563/photo_2025-12-26_18-01-49_lt6oge.jpg",
+  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768563/photo_2025-12-26_18-01-14_ewh6tz.jpg",
+  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768563/photo_2025-12-26_18-01-19_gfqld8.jpg",
+  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768563/photo_2025-12-26_18-01-07_owdmbw.jpg",
+  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768563/photo_2025-12-26_18-01-54_rksu6y.jpg",
+  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768562/photo_2025-12-26_18-01-29_vodgbo.jpg",
+  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768562/photo_2025-12-26_18-01-40_g2wvx2.jpg",
+  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768562/photo_2025-12-26_18-01-24_hwieor.jpg",
+  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768561/photo_2025-12-26_18-02-06_v5npr0.jpg",
+  "https://res.cloudinary.com/dmngvz0f4/image/upload/v1766768561/photo_2025-12-26_18-01-59_amlnzr.jpg",
+];
+
 export default function Home() {
   const [currentVerse, setCurrentVerse] = useState<Verse | null>(null);
   const [isLoadingVerse, setIsLoadingVerse] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const verseRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+  };
 
   const getRandomVerse = useCallback(async () => {
     setIsLoadingVerse(true);
@@ -90,77 +120,136 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#011C40] via-[#021F59] to-[#011C40]">
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-float" />
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "-1.5s" }} />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl" />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentImageIndex}
+            className="absolute inset-0"
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2 }}
+          >
+            <img
+              src={carouselImages[currentImageIndex]}
+              alt="Excelle pour Christ"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </AnimatePresence>
+
+        <div className="absolute inset-0 bg-gradient-to-b from-[#011C40]/80 via-[#011C40]/60 to-[#011C40]/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#011C40]/70 via-transparent to-[#011C40]/70" />
+
+        <div className="relative z-10 container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+            <motion.div
+              className="backdrop-blur-xl bg-[#011C40]/40 border border-white/10 rounded-md p-8 lg:p-12"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-5xl font-bold text-white/20">01</span>
+                <div className="flex gap-1">
+                  {[0, 1, 2, 3].map((i) => (
+                    <div
+                      key={i}
+                      className={`w-2 h-2 rounded-full ${i === 0 ? "bg-primary" : "bg-white/30"}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <h2 className="text-sm uppercase tracking-[0.3em] text-primary mb-4 font-semibold">
+                Tirer Mon Verset
+              </h2>
+
+              <p className="text-white/70 mb-8 leading-relaxed">
+                Laissez-vous inspirer par la Parole de Dieu. Cliquez sur le bouton ci-dessous pour recevoir un verset biblique qui parlera à votre coeur aujourd'hui.
+              </p>
+
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                <Button
+                  size="lg"
+                  className="w-full text-lg py-6 animate-pulse-glow gold-glow-hover group"
+                  onClick={getRandomVerse}
+                  disabled={isLoadingVerse}
+                  data-testid="button-draw-verse"
+                >
+                  <Sparkles className="w-5 h-5 mr-2 group-hover:animate-spin" />
+                  Tirer mon verset
+                </Button>
+              </motion.div>
+
+              <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/10">
+                <button
+                  onClick={prevImage}
+                  className="text-white/50 hover:text-primary transition-colors"
+                  data-testid="button-prev-image"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <div className="flex gap-2">
+                  {carouselImages.slice(0, 5).map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentImageIndex(i)}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        i === currentImageIndex % 5 ? "bg-primary w-6" : "bg-white/30"
+                      }`}
+                      data-testid={`button-carousel-dot-${i}`}
+                    />
+                  ))}
+                </div>
+                <button
+                  onClick={nextImage}
+                  className="text-white/50 hover:text-primary transition-colors"
+                  data-testid="button-next-image"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="text-center lg:text-left"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              <h1
+                className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-none"
+                data-testid="text-hero-title"
+              >
+                <span className="block text-white/90">EXCELLE</span>
+                <span className="block text-gradient-gold">POUR</span>
+                <span className="block text-white/90">CHRIST</span>
+              </h1>
+              <p
+                className="text-lg md:text-xl text-white/60 mt-6 max-w-md"
+                data-testid="text-hero-subtitle"
+              >
+                Une oeuvre de foi, un espace de prière, d'écoute et d'amour où chacun peut reprendre souffle.
+              </p>
+            </motion.div>
           </div>
-          <div className="absolute inset-0 dark-wash" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h1
-              className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight"
-              data-testid="text-hero-title"
-            >
-              Bienvenue dans la
-              <span className="block text-gradient-gold">maison de Dieu</span>
-            </h1>
-          </motion.div>
-
-          <motion.p
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            data-testid="text-hero-subtitle"
-          >
-            Une communauté spirituelle vivante où chaque âme trouve sa place.
-            Rejoignez-nous pour une expérience de foi transformatrice.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="mb-12"
-          >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Button
-                size="lg"
-                className="text-lg px-8 py-6 animate-pulse-glow gold-glow-hover"
-                onClick={getRandomVerse}
-                disabled={isLoadingVerse}
-                data-testid="button-draw-verse"
-              >
-                <Sparkles className="w-5 h-5 mr-2" />
-                Tirer mon verset
-              </Button>
-            </motion.div>
-          </motion.div>
-
-          <div ref={verseRef}>
-            <VerseCard
-              verse={currentVerse}
-              isLoading={isLoadingVerse}
-              onNewVerse={getRandomVerse}
-              onDownload={downloadVerse}
-            />
-          </div>
+        <div ref={verseRef} className="absolute bottom-32 left-1/2 -translate-x-1/2 w-full max-w-2xl px-6">
+          <VerseCard
+            verse={currentVerse}
+            isLoading={isLoadingVerse}
+            onNewVerse={getRandomVerse}
+            onDownload={downloadVerse}
+          />
         </div>
 
         <motion.button
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 hover:text-primary transition-colors"
           onClick={scrollToContent}
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
@@ -170,15 +259,19 @@ export default function Home() {
         </motion.button>
       </section>
 
-      <section className="py-24 bg-card">
-        <div className="container mx-auto px-6">
+      <section className="py-24 bg-card relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-primary rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
           <AnimatedSection animation="fade-up" className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+            <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">
               Notre <span className="text-gradient-gold">Mission</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Partager l'amour de Dieu et transformer des vies à travers la foi,
-              la communauté et le service.
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+              Conduire les coeurs vers Jésus-Christ et accompagner les personnes dans leur chemin de guérison et de transformation.
             </p>
           </AnimatedSection>
 
@@ -187,19 +280,23 @@ export default function Home() {
               <AnimatedSection
                 key={item.title}
                 animation="fade-up"
-                delay={index * 0.1}
+                delay={index * 0.15}
               >
                 <motion.div
-                  className="p-8 rounded-md bg-background border border-border text-center"
-                  whileHover={{ y: -5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  className="group p-8 rounded-md bg-background border border-border text-center relative overflow-visible"
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   data-testid={`card-mission-${index}`}
                 >
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
-                    <item.icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground text-sm">{item.description}</p>
+                  <motion.div
+                    className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center border border-primary/30"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    <item.icon className="w-10 h-10 text-primary" />
+                  </motion.div>
+                  <h3 className="text-2xl font-serif font-semibold mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.description}</p>
                 </motion.div>
               </AnimatedSection>
             ))}
@@ -208,13 +305,18 @@ export default function Home() {
       </section>
 
       <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#011C40] to-[#021F59] opacity-50" />
-        <div className="relative container mx-auto px-6">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#011C40] via-[#021F59] to-[#011C40]" />
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-float" style={{ animationDelay: "-1.5s" }} />
+        </div>
+
+        <div className="relative z-10 container mx-auto px-6">
           <AnimatedSection animation="fade-up" className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+            <h2 className="text-3xl md:text-5xl font-serif font-bold mb-4">
               Nos <span className="text-gradient-gold">Cultes</span>
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-white/60 text-lg">
               Rejoignez-nous chaque semaine pour des moments de partage et de communion.
             </p>
           </AnimatedSection>
@@ -240,23 +342,23 @@ export default function Home() {
                 delay={0.2}
               >
                 <motion.div
-                  className="p-8 rounded-md bg-card border border-border"
-                  whileHover={{ scale: 1.02 }}
+                  className="p-8 rounded-md bg-white/5 backdrop-blur-sm border border-white/10"
+                  whileHover={{ scale: 1.03, backgroundColor: "rgba(255,255,255,0.08)" }}
                   transition={{ type: "spring", stiffness: 300 }}
                   data-testid={`card-service-${index}`}
                 >
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-16 h-16 rounded-md bg-primary/20 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-md bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center border border-primary/30">
                       <span className="text-primary font-bold text-xl">{service.time}</span>
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground uppercase tracking-wider">
+                      <p className="text-sm text-primary uppercase tracking-wider font-medium">
                         {service.day}
                       </p>
-                      <h3 className="text-xl font-semibold">{service.title}</h3>
+                      <h3 className="text-xl font-serif font-semibold text-white">{service.title}</h3>
                     </div>
                   </div>
-                  <p className="text-muted-foreground">{service.description}</p>
+                  <p className="text-white/60">{service.description}</p>
                 </motion.div>
               </AnimatedSection>
             ))}
@@ -267,20 +369,21 @@ export default function Home() {
       <section className="py-24 bg-card">
         <div className="container mx-auto px-6 text-center">
           <AnimatedSection animation="scale">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
+            <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6">
               Prêt à nous <span className="text-gradient-gold">rejoindre</span> ?
             </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto mb-8">
+            <p className="text-muted-foreground max-w-xl mx-auto mb-8 text-lg">
               Que vous soyez nouveau dans la foi ou que vous cherchiez une nouvelle
               communauté, vous êtes le bienvenu parmi nous.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <Button
                 size="lg"
-                className="text-lg px-8 gold-glow-hover"
+                className="text-lg px-10 py-6 gold-glow-hover"
                 onClick={() => window.location.href = "/join"}
                 data-testid="button-join-cta"
               >

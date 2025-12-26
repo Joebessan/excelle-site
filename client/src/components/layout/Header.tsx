@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Church } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { SiInstagram, SiYoutube, SiTelegram, SiWhatsapp } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -9,6 +10,13 @@ const navItems = [
   { label: "Qui sommes-nous", href: "/about" },
   { label: "Faire un don", href: "/donate" },
   { label: "Nous rejoindre", href: "/join" },
+];
+
+const socialLinks = [
+  { icon: SiInstagram, href: "#", label: "Instagram" },
+  { icon: SiYoutube, href: "#", label: "YouTube" },
+  { icon: SiTelegram, href: "#", label: "Telegram" },
+  { icon: SiWhatsapp, href: "#", label: "WhatsApp" },
 ];
 
 export function Header() {
@@ -27,27 +35,42 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "glass py-3" : "bg-transparent py-6"
+        isScrolled ? "glass py-3" : "bg-transparent py-4"
       }`}
       data-testid="header"
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
+      <div className="container mx-auto px-6 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <span className="text-xs text-muted-foreground uppercase tracking-wider hidden sm:block">Suivez-nous</span>
+          <div className="flex items-center gap-2">
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                className="text-muted-foreground hover:text-primary transition-colors"
+                data-testid={`link-social-${social.label.toLowerCase()}`}
+              >
+                <social.icon className="w-4 h-4" />
+              </a>
+            ))}
+          </div>
+        </div>
+
         <Link href="/" data-testid="link-logo">
           <motion.div
             className="flex items-center gap-3 cursor-pointer"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
           >
-            <div className="w-10 h-10 rounded-md bg-primary flex items-center justify-center">
-              <Church className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <span className="text-xl font-serif font-bold tracking-wide text-foreground">
-              ÉGLISE
-            </span>
+            <img
+              src="https://res.cloudinary.com/dmngvz0f4/image/upload/v1766769765/logo_f_rzbbkh.png"
+              alt="Excelle pour Christ"
+              className="h-10 w-auto"
+            />
           </motion.div>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-2" data-testid="nav-desktop">
+        <nav className="hidden md:flex items-center gap-1" data-testid="nav-desktop">
           {navItems.map((item) => (
             <NavLink
               key={item.href}
@@ -121,7 +144,7 @@ function NavLink({
   return (
     <Link href={href}>
       <motion.span
-        className={`relative px-4 py-2 text-sm font-medium uppercase tracking-wider cursor-pointer block ${
+        className={`relative px-3 py-2 text-xs font-medium uppercase tracking-wider cursor-pointer block ${
           isActive ? "text-primary" : "text-foreground"
         }`}
         whileHover={{ scale: 1.05 }}
@@ -130,7 +153,7 @@ function NavLink({
       >
         {label}
         <motion.span
-          className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary rounded-full"
+          className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary rounded-full"
           initial={{ scaleX: isActive ? 1 : 0 }}
           animate={{ scaleX: isActive ? 1 : 0 }}
           whileHover={{ scaleX: 1 }}

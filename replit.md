@@ -1,7 +1,7 @@
-# Church Website - Église
+# Excelle pour Christ - Church Website
 
 ## Overview
-A modern, minimalist church website with fluid, elastic animations throughout. The site features a deep navy blue color scheme with gold/bronze accents, creating an immersive spiritual experience.
+A modern, minimalist church website for "Excelle pour Christ International" with fluid, elastic animations throughout. Features a deep navy blue color scheme with gold/bronze accents, creating an immersive spiritual experience.
 
 ## Architecture
 
@@ -14,7 +14,7 @@ A modern, minimalist church website with fluid, elastic animations throughout. T
 
 ### Backend (Express)
 - **Framework**: Express.js with TypeScript
-- **Storage**: In-memory storage (MemStorage)
+- **Database**: PostgreSQL with Drizzle ORM
 - **API**: RESTful endpoints
 
 ## Project Structure
@@ -23,7 +23,7 @@ client/
 ├── src/
 │   ├── components/
 │   │   ├── layout/
-│   │   │   ├── Header.tsx      # Navigation with elastic hover effects
+│   │   │   ├── Header.tsx      # Navigation with logo and social links
 │   │   │   └── Footer.tsx      # Secondary navigation, contact info
 │   │   ├── ui/
 │   │   │   ├── AnimatedSection.tsx  # Reusable scroll animations
@@ -31,16 +31,17 @@ client/
 │   │   └── verse/
 │   │       └── VerseCard.tsx   # Random verse display with download
 │   ├── pages/
-│   │   ├── Home.tsx           # Hero + verse generator + mission sections
-│   │   ├── About.tsx          # History timeline, leadership, mission
+│   │   ├── Home.tsx           # Hero carousel + verse generator + mission sections
+│   │   ├── About.tsx          # History timeline, leadership (College des Serviteurs)
 │   │   ├── Donate.tsx         # Donation form with 3 options
 │   │   ├── Join.tsx           # Contact form + volunteer signup
 │   │   └── not-found.tsx
 │   └── hooks/
 │       └── use-in-view.ts     # Intersection observer for scroll animations
 server/
+├── db.ts                      # PostgreSQL connection with Drizzle
 ├── routes.ts                  # API endpoints
-├── storage.ts                 # In-memory data storage
+├── storage.ts                 # Database storage implementation
 └── index.ts                   # Express server setup
 shared/
 └── schema.ts                  # TypeScript types and Zod schemas
@@ -49,9 +50,9 @@ shared/
 ## Key Features
 
 ### Pages
-1. **Home (Accueil)**: Full-screen hero with "Tirer mon verset" button, mission cards, service schedule
-2. **About (Qui sommes-nous)**: Church history timeline, leadership grid, faith declaration carousel
-3. **Donate (Faire un don)**: Three donation types (Tithe, Offering, Project), amount selector, payment form
+1. **Home (Accueil)**: Full-screen hero with image carousel, "Tirer mon verset" button, mission cards, service schedule
+2. **About (Qui sommes-nous)**: Church history (founded 2001 by Apôtre Janine AHO), Collège des Serviteurs, values
+3. **Donate (Faire un don)**: Three donation types (Dîme, Offrande, Projet), amount selector, payment form
 4. **Join (Nous rejoindre)**: Contact form with volunteer area selection, location info
 
 ### Animations
@@ -59,10 +60,17 @@ shared/
 - Scroll-triggered fade/slide animations
 - Gold glow effects on buttons
 - Parallax depth effects on hero
+- Image carousel with auto-advance
+
+### Navigation
+- Scroll reset on page navigation
+- Responsive mobile menu
+- Social links (Instagram, YouTube, Telegram, WhatsApp)
+- Official logo from Cloudinary
 
 ## API Endpoints
 - `GET /api/verse/random` - Returns a random Bible verse
-- `POST /api/contact` - Submits contact form
+- `POST /api/contact` - Submits contact form (saved to PostgreSQL)
 - `GET /api/contact` - Retrieves all contact submissions
 
 ## Design System
@@ -76,13 +84,30 @@ shared/
 - **Headings**: Playfair Display (serif)
 - **Body**: Montserrat (sans-serif)
 
+### Assets
+- Logo: https://res.cloudinary.com/dmngvz0f4/image/upload/v1766769765/logo_f_rzbbkh.png
+- Church images carousel from Cloudinary
+
+## Database
+- PostgreSQL with Drizzle ORM
+- Tables: users, contact_submissions
+- Push schema: `npm run db:push`
+
 ## Development
 - Start: `npm run dev`
 - Frontend runs on port 5000
 - Backend API prefixed with `/api`
 
+## Church Information
+- **Name**: Excelle pour Christ International
+- **Founded**: April 5, 2001, Guinkomey, Cotonou, Benin
+- **Founder**: Apôtre Janine AHO
+- **Formerly**: Mount Horeb International Foundation
+
 ## Recent Changes
-- Initial MVP implementation with all core pages
-- Responsive design with mobile navigation
-- Verse generator with PNG download feature
-- Contact form with volunteer signup
+- Set up PostgreSQL database for permanent storage
+- Added scroll reset on navigation
+- Updated visual design with modern split-layout hero
+- Added image carousel with Cloudinary images
+- Updated About page with warm editorial content and leadership list
+- Added official logo and social media links
