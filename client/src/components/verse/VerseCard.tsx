@@ -28,9 +28,7 @@ export function VerseCard({
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: -10 }}
           transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 25,
+            duration: 0.2,
           }}
           className="fixed inset-0 z-[100] flex items-center justify-center p-4"
           data-testid="verse-card-overlay"
@@ -45,10 +43,10 @@ export function VerseCard({
           
           <motion.div
             className="relative w-full max-w-3xl overflow-hidden rounded-md shadow-2xl"
-            initial={{ scale: 0.8, y: 50 }}
-            animate={{ scale: 1, y: 0 }}
-            exit={{ scale: 0.8, y: 50 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            transition={{ duration: 0.15 }}
             data-testid="verse-card"
           >
             <div 

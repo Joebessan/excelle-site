@@ -318,7 +318,7 @@ export default function About() {
             <AnimatedSection animation="fade-right">
               <div className="relative">
                 <img
-                  src="https://res.cloudinary.com/dmngvz0f4/image/upload/v1767007054/477112229_610578731593220_4662935868068050667_n_nhhq43.jpg"
+                  src="https://res.cloudinary.com/dmngvz0f4/image/upload/v1767013074/photo_2025-12-29_12-06-43_bvxxdp.jpg"
                   alt="Apôtre Janine AHO"
                   className="w-full max-w-md mx-auto rounded-md shadow-2xl"
                 />

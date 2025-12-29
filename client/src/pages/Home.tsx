@@ -27,7 +27,7 @@ const weeklyProgram = [
 ];
 
 const upcomingEvents = [
-  { title: "21 Jours de Jeûne", date: "1-21 Janvier 2026", type: "Programme spirituel" },
+  { title: "40 Jours de Jeûne", date: "1 Janvier - 9 Février 2026", type: "Programme spirituel" },
   { title: "Convention Annuelle", date: "15-17 Février 2026", type: "Événement majeur" },
   { title: "Camp de Jeunes", date: "Mars 2026", type: "Ministère Jeunesse" },
 ];
@@ -499,7 +499,7 @@ export default function Home() {
                     <Heart className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-2xl font-serif font-bold mb-4">
-                    Soutenir les 21 jours de jeûne
+                    Soutenir les 40 jours de jeûne
                   </h3>
                   <p className="text-muted-foreground mb-6">
                     Participez à ce temps de consécration en semant dans ce programme spirituel. Votre soutien permet de bénir et d'accompagner des centaines de fidèles.
