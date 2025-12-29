@@ -119,3 +119,11 @@ shared/
 - Added weekly program section (Lundi-Dimanche)
 - Added upcoming events and support card for current programs
 - Added blog section on home page
+- **[Dec 2025]** Added Teachings page with video-style teaching cards
+- **[Dec 2025]** Updated blog section with 5 categories: Marriage, Births, Baptism, Youth, Teens/Kids
+- **[Dec 2025]** Complete About page overhaul: new mission section, 9 values, social work section, missionary churches list (20+ locations)
+- **[Dec 2025]** Added founder biography with full credentials and World Peace Ambassador distinction
+- **[Dec 2025]** Extended history timeline (6 events from 2001-2020)
+- **[Dec 2025]** Updated College of Servants with 18 leaders' photos and mini-descriptions
+- **[Dec 2025]** Added footer ministry sections: "Join the Choir" and "Join the Welcome Team" with images
+- **[Dec 2025]** Moved newsletter to bottom of page after "Ready to join us" section
